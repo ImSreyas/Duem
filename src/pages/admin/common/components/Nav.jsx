@@ -1,12 +1,16 @@
 import { NavLink } from "react-router-dom"
 import sunIconUrl from "/src/assets/sun.svg";
+import notificationIconUrl from "/src/assets/bell.svg";
+import userIconUrl from "/src/assets/user.svg";
 import "../style/nav.scss";
 
 const Nav = () => {
   return (
       <nav>
         <div className="wrapper-first">
-          <div className="nav-icon profile-btn-wrapper"></div>
+          <div className="nav-icon profile-btn-wrapper">
+            <img src={userIconUrl} />
+          </div>
         </div>
         <div className="wrapper-second">
           <div className="nav-wrapper">
@@ -38,7 +42,9 @@ const Nav = () => {
           <div className="nav-icon theme-changer-btn-wrapper">
             <img src={sunIconUrl} />
           </div>
-          <div className="nav-icon profile-btn-wrapper"></div>
+          <div className="nav-icon profile-btn-wrapper">
+            <img src={notificationIconUrl} />
+          </div>
         </div>
       </nav>
   )

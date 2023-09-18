@@ -19,10 +19,11 @@
             .search-box {
                 font-family: inherit;
                 padding-inline: 1.5rem;
+                width: 25rem;
                 height: 3.25rem;
                 background-color: $background-color;
                 color: $color;
-                font-size: 1rem;
+                font-size: .85rem;
                 border-radius: 1.25rem;
 
                 @include border;
@@ -47,7 +48,7 @@
             .new-btn {
                 @include border;
                 padding: .8rem 3.5rem .8rem 1.2rem;
-                border-radius: 1.2rem;
+                border-radius: 1.25rem;
                 position: relative;
                 cursor: pointer;
                 background-color: $background-color;

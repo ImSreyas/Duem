@@ -1,7 +1,7 @@
 @import "./colors.scss";
 @import "./scrollbar.scss";
 
-:root{
+:root {
   width: 100vw;
   font-family: "Poppins", sans-serif;
   line-height: 1.5;
@@ -21,7 +21,8 @@
 
   overflow-x: hidden;
 }
-*{
+
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -40,7 +41,7 @@ h1 {
   line-height: 1.1;
 }
 
-a{
+a {
   color: $color;
   text-decoration: none;
 }
@@ -56,7 +57,15 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-.main-body{
+
+input {
+  &:focus {
+    outline: none;
+    border: 2px solid $color !important;
+  }
+}
+
+.main-body {
   width: calc(100vw - .4rem);
   min-height: 90vh;
   max-height: fit-content;
