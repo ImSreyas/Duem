@@ -1,0 +1,107 @@
+@import "/src/colors.scss";
+@import "/src/lib.scss";
+
+.collection-page {
+    .tool-bar {
+        padding-block-end: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .search-wrapper {
+            height: 3.25rem;
+
+            form {
+                @include flex-center;
+                gap: .75rem;
+            }
+
+            .search-box {
+                font-family: inherit;
+                padding-inline: 1.5rem;
+                height: 3.25rem;
+                background-color: $background-color;
+                color: $color;
+                font-size: 1rem;
+                border-radius: 1.25rem;
+
+                @include border;
+            }
+
+            .search-btn {
+                $size: 3.25rem;
+                padding: 1rem;
+
+                @include b-icon("/src/assets/search.svg", 3.25rem, 1.1rem);
+                @include border;
+                background-color: $background-color;
+                border-radius: 1.3rem;
+            }
+        }
+
+        .options-wrapper {
+            @include flex-center;
+            gap: .7rem;
+
+            .sort-btn,
+            .new-btn {
+                @include border;
+                padding: .8rem 3.5rem .8rem 1.2rem;
+                border-radius: 1.2rem;
+                position: relative;
+                cursor: pointer;
+                background-color: $background-color;
+
+                &:focus{
+                    background-color: black;
+                }
+                .option-arrow{
+                    top: 50%;
+                    right: .6rem;
+                    transform: translateY(-50%);
+                    position: absolute;
+                    @include border;
+                    @include b-icon("/src/assets/angle-small-down.svg", 1.8rem, .8rem);
+                    border-radius: .7rem;
+                    pointer-events: none;
+                }
+            }
+        }
+    }
+
+    .collection {
+        padding-block: .5rem;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.2rem 1.8rem;
+
+        .collection-card-wrapper {
+            height: fit-content;
+            width: 100%;
+            padding: 1rem 2rem;
+
+            font-size: 1.05rem;
+            font-weight: 400;
+            border: 2px solid $border-color;
+            border-radius: 1.9rem;
+
+            transition: border-color 200ms ease-in-out;
+
+            &:hover {
+                border-color: darken($color: $border-color, $amount: 75);
+            }
+
+            // .collection-name{
+
+            // }
+            .collection-member-count {
+                span {
+                    font-weight: 500;
+                    font-size: 3rem !important;
+                    margin-inline-end: .2rem;
+                }
+            }
+        }
+    }
+}

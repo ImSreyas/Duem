@@ -1,0 +1,21 @@
+@import "./colors.scss";
+
+::-webkit-scrollbar {
+  background-color: $background-color;
+  border-radius: 100px;
+  width: .4rem;
+}
+::-webkit-scrollbar-track {
+  width: .4rem;
+}
+::-webkit-scrollbar-thumb {
+  background-color: $color;
+  border-radius: 50rem;
+  /* border: .05rem solid rgb(255, 255, 255); */
+}
+/* ::-webkit-scrollbar-thumb:hover{
+    
+} */
+::-webkit-scrollbar-thumb:active {
+  background-color: lighten($color, 25);
+}

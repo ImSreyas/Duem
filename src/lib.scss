@@ -1,0 +1,20 @@
+@import "./colors.scss";
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin b-icon($url: "", $size: 1rem, $fit: contain) {
+    width: $size;
+    aspect-ratio: $size/$size;
+    background-image: url($url);
+    background-size: $fit;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+@mixin border {
+    border: 2px solid $border-color;
+}

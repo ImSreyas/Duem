@@ -1,0 +1,75 @@
+@import "/src/colors.scss";
+
+nav {
+    width: 100vw;
+    height: fit-content;
+    padding: 2rem 6rem;
+    font-weight: 500;
+    position: sticky;
+    top: -1rem;
+    z-index: 1000;
+
+    background-color: $background-color;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .wrapper-first,
+    .wrapper-second {
+        width: fit-content;
+        display: inline-block;
+        display: flex;
+        gap: .75rem;
+
+        .nav-wrapper {
+            display: flex;
+            width: fit-content;
+            border: 2px solid $border-color;
+            border-radius: 1.25rem;
+            overflow: hidden;
+
+            .nav-item {
+                padding: .75rem 2rem;
+                border-inline-end: 2px solid $border-color;
+                transition: color 250ms ease-in-out;
+                color: lighten($color, 50);
+
+
+                &:hover {
+                    color: $color;
+                }
+
+                &.active {
+                    background-color: $color;
+                    color: $background-color;
+                    border: none;
+                }
+
+                &:last-child {
+                    border-inline-end: none;
+                }
+            }
+        }
+
+        .nav-icon {
+            $size: 3.25rem;
+
+            display: inline-block;
+            width: $size;
+            height: $size;
+            padding: .8rem;
+
+            border: 2px solid $border-color;
+            border-radius: 1.3rem;
+            cursor: pointer;
+
+            img {
+                display: block;
+                width: 100%;
+                height: 100%;
+
+                object-fit: contain;
+            }
+        }
+    }
+}
