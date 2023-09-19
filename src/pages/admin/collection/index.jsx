@@ -1,6 +1,7 @@
 import { Form, Link } from "react-router-dom";
 import "./style/collection.scss";
-import { useState } from "react";
+import NewButton from "./components/NewButton";
+import SortButton from "./components/SortButton";
 
 const Collection = () => {
   const collectionData = [
@@ -75,8 +76,6 @@ const Collection = () => {
       members: 43,
     },
   ];
-  const [createNew, setCreateNew] = useState("new");
-  const [sort, setSort] = useState("sort");
 
   return (
     <div className="main-body collection-page">
@@ -88,14 +87,8 @@ const Collection = () => {
           </Form>
         </div>
         <div className="options-wrapper">
-          <span className="sort-btn">
-            {sort}
-            <span className="option-arrow"></span>
-          </span>
-          <span className="new-btn">
-            {createNew}
-            <span className="option-arrow"></span>
-          </span>
+          <SortButton />
+          <NewButton />
         </div>
       </div>
       <div className="collection">
@@ -111,6 +104,7 @@ const Collection = () => {
                 <span>{collection.members}</span>
                 members
               </div>
+              <div className="expand-arrow"></div>
             </Link>
           );
         })}

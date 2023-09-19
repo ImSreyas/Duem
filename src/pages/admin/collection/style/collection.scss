@@ -20,7 +20,7 @@
                 font-family: inherit;
                 padding-inline: 1.5rem;
                 width: 25rem;
-                height: 3.25rem;
+                height: 3.3rem;
                 background-color: $background-color;
                 color: $color;
                 font-size: .85rem;
@@ -81,6 +81,7 @@
             height: fit-content;
             width: 100%;
             padding: 1rem 2rem;
+            position: relative;
 
             font-size: 1.05rem;
             font-weight: 400;
@@ -102,6 +103,14 @@
                     font-size: 3rem !important;
                     margin-inline-end: .2rem;
                 }
+            }
+            .expand-arrow{
+               position: absolute; 
+               top: 1rem;
+               right: 1rem;
+               border-radius: 100rem;
+               @include border;
+               @include b-icon("/src/assets/angle-small-down.svg", 1.5rem, .8rem)
             }
         }
     }

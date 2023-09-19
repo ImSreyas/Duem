@@ -8,7 +8,7 @@
 
 @mixin b-icon($url: "", $size: 1rem, $fit: contain) {
     width: $size;
-    aspect-ratio: $size/$size;
+    aspect-ratio: calc($size/$size);
     background-image: url($url);
     background-size: $fit;
     background-position: center;
