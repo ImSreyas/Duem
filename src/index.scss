@@ -34,6 +34,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -58,7 +59,17 @@ button {
   transition: border-color 0.25s;
 }
 
-input {
+input,
+textarea {
+  padding: 1rem 1.5rem;
+  border-radius: 1.18rem;
+  border: 2px solid $border-color;
+  background-color: $background-color;
+  color: $color;
+  font-size: .9rem;
+  font-family: "Poppins", sans-serif;
+  resize: none;
+
   &:focus {
     outline: none;
     border: 2px solid $color !important;
@@ -72,6 +83,10 @@ input {
 
   padding: 1rem 6rem;
 }
+
+// body:has(.active.new-collection-container-wrapper) {
+//   overflow-y: hidden;
+// }
 
 .option-container-right {
   position: absolute;
@@ -88,16 +103,23 @@ input {
   // backdrop-filter: blur(100px);
   box-shadow: 0 0 2rem rgb(210, 210, 210);
   background-color: $background-color;
+  display: none;
+
+  &[data-show="true"] {
+    display: block;
+  }
 
   .options {
-    padding: .5rem 1rem .5rem 1.5rem;
+    text-align: center;
+    padding: .5rem 1rem .5rem 1rem;
     border-radius: .8rem;
     border: 2px solid $background-color;
     position: relative;
 
-    &.selected{
+    &.selected {
       border: 2px solid lighten($color: $border-color, $amount: 5);
     }
+
     // &.selected::before{
     //   content: '';
     //   position: absolute;
@@ -116,6 +138,21 @@ input {
   }
 }
 
+@media (width < 920px) {
+  .main-body {
+    padding-inline: 4rem;
+  }
+}
+@media (width < 600px) {
+  .main-body {
+    padding-inline: 2rem;
+  }
+}
+@media (width < 400px) {
+  .main-body {
+    padding-inline: 1rem;
+  }
+}
 
 
 

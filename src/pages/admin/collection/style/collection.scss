@@ -5,6 +5,7 @@
     .tool-bar {
         padding-block-end: 1rem;
         display: flex;
+        gap: 1rem;
         justify-content: space-between;
         align-items: center;
 
@@ -53,10 +54,11 @@
                 cursor: pointer;
                 background-color: $background-color;
 
-                &:focus{
+                &:focus {
                     background-color: black;
                 }
-                .option-arrow{
+
+                .option-arrow {
                     top: 50%;
                     right: .6rem;
                     transform: translateY(-50%);
@@ -65,6 +67,137 @@
                     @include b-icon("/src/assets/angle-small-down.svg", 1.8rem, .8rem);
                     border-radius: .7rem;
                     pointer-events: none;
+                    // transition: 200ms transform ease-in-out;
+
+                    &.active {
+                        transform: translateY(-50%) rotate(180deg);
+                    }
+                }
+            }
+
+            .new-container-wrapper {
+                position: fixed;
+                top: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 1001;
+                @include flex-center;
+                flex-direction: column;
+                background-color: $background-color;
+                width: 100vw;
+                height: 100vh;
+                transition: background-color 500ms ease-in-out;
+
+                &.active{
+                    top: 0rem;
+                    background-color: rgba($color, .6);
+                }
+
+                .new-container {
+                    @include flex-center;
+                    flex-direction: column;
+
+                    width: min(48rem, 90%);
+                    height: fit-content;
+                    // backdrop-filter: blur(6px);
+                    background-color: $background-color;
+                    padding: 2.5rem 3rem;
+                    border-radius: 2rem;
+                    @include border;
+
+                    transform: translateY(100%);
+                    transition: transform 500ms ease-in-out;
+
+                    &.active {
+                        transform: translateY(0);
+                    }
+
+                    .nav-bar {
+                        @include flex-center;
+                        justify-content: space-between;
+                        height: fit-content;
+                        width: 100%;
+
+                        .close-btn {
+                            display: inline-block;
+                            @include b-icon("/src/assets/cross-small.svg", 3.25rem, 1.25rem);
+                            @include border;
+                            border-radius: 1.3rem;
+                            cursor: pointer;
+                        }
+                    }
+
+                    .form-container {
+                        flex-grow: 1;
+                        padding: 1rem 0rem 2rem;
+                        @include flex-center;
+                        flex-direction: column;
+
+                        form {
+                            width: 100%;
+                            padding: 0 4rem;
+
+                            input,
+                            textarea {
+                                margin-block-end: 1rem;
+                                width: 100%;
+                                font-size: .85rem;
+                            }
+                            .phone-email-wrapper{
+                                @include flex-center;
+                                gap: .8rem;
+
+                                .phone{
+                                    flex: 1;
+                                }
+                                .email{
+                                    flex: 2;
+                                }
+                            }
+                            .select-collection-wrapper{
+                                width: 100%;
+                                @include flex-center;
+                                gap: .8rem;
+                                margin-block-end: 1rem;
+
+                                .selected-collection{
+                                    flex-grow: 1;
+                                    @include border;
+                                    border-radius: 1rem;
+                                    height: 3.25rem;
+                                    @include flex-center;
+                                    font-size: .85rem;
+                                }
+                                .select-collection-btn{
+                                    @include b-icon("/src/assets/layer-plus.svg", 3.25rem, 1.1rem);
+                                    @include border;
+                                    border-radius: 1.2rem;
+                                    cursor: pointer;
+                                }
+                            }
+
+                            .btn-wrapper {
+                                display: flex;
+                                gap: .8rem;
+
+                                button {
+                                    border-radius: 1.18rem;
+                                    padding: 1rem;
+
+                                    &.submit-btn {
+                                        width: 70%;
+                                    }
+
+                                    &.close-btn {
+                                        flex-grow: 1;
+                                        background-color: $background-color;
+                                        @include border;
+                                        color: $color;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -104,14 +237,48 @@
                     margin-inline-end: .2rem;
                 }
             }
-            .expand-arrow{
-               position: absolute; 
-               top: 1rem;
-               right: 1rem;
-               border-radius: 100rem;
-               @include border;
-               @include b-icon("/src/assets/angle-small-down.svg", 1.5rem, .8rem)
+
+            .expand-arrow {
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                border-radius: 100rem;
+                @include border;
+                @include b-icon("/src/assets/angle-small-down.svg", 1.5rem, .8rem)
             }
+        }
+    }
+}
+
+@media (width <= 1100px) {
+    .collection-page{
+        .tool-bar{
+            flex-direction: column;   
+            align-items: end;
+
+            .search-wrapper{
+                width: 100%;
+
+                form{
+                    @include flex-center;
+                    width: 100%;
+                    
+                    input{
+                        flex: 1;
+                        min-width: 6rem;
+                    }
+                }
+            }
+        }
+        .collection{
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+@media (width <= 750px){
+    .collection-page{
+        .collection{
+            grid-template-columns: 1fr;
         }
     }
 }

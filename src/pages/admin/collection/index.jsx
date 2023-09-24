@@ -82,7 +82,7 @@ const Collection = () => {
       <div className="tool-bar">
         <div className="search-wrapper">
           <Form>
-            <input type="text" className="search-box" />
+            <input type="text" className="search-box" placeholder="search collections..." />
             <button type="submit" className="search-btn"></button>
           </Form>
         </div>

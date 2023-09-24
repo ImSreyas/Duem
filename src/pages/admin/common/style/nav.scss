@@ -1,7 +1,10 @@
 @import "/src/colors.scss";
+@import "/src/lib.scss";
 
 nav {
-    width: 100vw;
+
+    // width: 100vw;
+    width: calc(100vw - .4rem);
     height: fit-content;
     padding: 2rem 6rem;
     font-weight: 500;
@@ -50,6 +53,12 @@ nav {
                 }
             }
         }
+        .nav-menu-icon {
+            @include b-icon("/src/assets/menu-burger.svg", 3.25rem, 1.2rem);
+            @include border;
+            border-radius: 1.3rem;
+            cursor: pointer;
+        }
 
         .nav-icon {
             $size: 3.25rem;
@@ -71,5 +80,23 @@ nav {
                 object-fit: contain;
             }
         }
+    }
+}
+@media (width < 920px){
+    nav{
+        padding-inline: 4rem;
+        padding-block-end: 1.2rem;
+    }
+}
+@media (width < 600px){
+    nav{
+        padding-inline: 2rem;
+        padding-block-end: 1rem;
+    }
+}
+@media (width < 400px){
+    nav{
+        padding-inline: 1rem;
+        padding-block-end: 1rem;
     }
 }
