@@ -88,7 +88,7 @@
                 height: 100vh;
                 transition: background-color 500ms ease-in-out;
 
-                &.active{
+                &.active {
                     top: 0rem;
                     background-color: rgba($color, .6);
                 }
@@ -132,6 +132,7 @@
                         padding: 1rem 0rem 2rem;
                         @include flex-center;
                         flex-direction: column;
+                        width: 100%;
 
                         form {
                             width: 100%;
@@ -143,24 +144,59 @@
                                 width: 100%;
                                 font-size: .85rem;
                             }
-                            .phone-email-wrapper{
+
+
+                            .error-wrapper {
+                                // margin-block-end: 1rem;
+                                transform: translateY(-.8rem);
+                                padding-inline: 1rem;
+                                &[data-shake=true]{
+                                    animation: shake 300ms ease-in-out;
+                                }
+                            }
+
+                            @keyframes shake {
+                                10% {
+                                    transform: translate(-10px, -.8rem);
+                                }
+
+                                30% {
+                                    transform: translate(10px, -.8rem);
+                                }
+
+                                50% {
+                                    transform: translate(-10px, -.8rem);
+                                }
+
+                                70% {
+                                    transform: translate(10px, -.8rem);
+                                }
+
+                                90% {
+                                    transform: translate(0, -.8rem);
+                                }
+                            }
+
+                            .phone-email-wrapper {
                                 @include flex-center;
                                 gap: .8rem;
 
-                                .phone{
+                                .phone {
                                     flex: 1;
                                 }
-                                .email{
+
+                                .email {
                                     flex: 2;
                                 }
                             }
-                            .select-collection-wrapper{
+
+                            .select-collection-wrapper {
                                 width: 100%;
                                 @include flex-center;
                                 gap: .8rem;
                                 margin-block-end: 1rem;
 
-                                .selected-collection{
+                                .selected-collection {
                                     flex-grow: 1;
                                     @include border;
                                     border-radius: 1rem;
@@ -168,7 +204,8 @@
                                     @include flex-center;
                                     font-size: .85rem;
                                 }
-                                .select-collection-btn{
+
+                                .select-collection-btn {
                                     @include b-icon("/src/assets/layer-plus.svg", 3.25rem, 1.1rem);
                                     @include border;
                                     border-radius: 1.2rem;
@@ -186,6 +223,9 @@
 
                                     &.submit-btn {
                                         width: 70%;
+                                        background-color: rgba($color: rgb(0, 188, 0), $alpha: .025);
+                                        border: 1.8px solid rgb(0, 202, 0);
+                                        color: rgb(0, 186, 0);
                                     }
 
                                     &.close-btn {
@@ -250,35 +290,78 @@
     }
 }
 
-@media (width <= 1100px) {
-    .collection-page{
-        .tool-bar{
-            flex-direction: column;   
+@media (width <=1100px) {
+    .collection-page {
+        .tool-bar {
+            flex-direction: column;
             align-items: end;
 
-            .search-wrapper{
+            .search-wrapper {
                 width: 100%;
 
-                form{
+                form {
                     @include flex-center;
                     width: 100%;
-                    
-                    input{
+
+                    input {
                         flex: 1;
                         min-width: 6rem;
                     }
                 }
             }
         }
-        .collection{
+
+        .collection {
             grid-template-columns: repeat(2, 1fr);
         }
     }
 }
-@media (width <= 750px){
-    .collection-page{
-        .collection{
+
+@media (width <=750px) {
+    .collection-page {
+        .new-container {
+            padding-block: 1.2rem !important;
+            border-radius: 1.5rem !important;
+
+            .form-container {
+                padding-block: 1.5rem !important;
+
+                form {
+                    padding-inline: 0rem !important;
+                }
+            }
+        }
+
+        .collection {
             grid-template-columns: 1fr;
+        }
+    }
+}
+
+@media (width <=500px) {
+    .collection-page {
+        .new-container {
+            padding: 1rem 1.2rem !important;
+
+            .form-container {
+                padding-block-end: 0rem !important;
+
+                form {
+                    .btn-wrapper {
+                        flex-direction: column;
+                        flex-direction: column-reverse;
+
+                        button {
+                            width: 100% !important;
+                        }
+                    }
+
+                    .phone-email-wrapper {
+                        flex-direction: column;
+                        gap: 0 !important;
+                    }
+                }
+            }
         }
     }
 }

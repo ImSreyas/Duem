@@ -1,8 +1,19 @@
+import { useState } from "react";
 import { Form } from "react-router-dom";
 
-const NewMember = ({state}) => {
+const NewMember = ({ state }) => {
   const [newMemberState, setNewMemberState] = state;
-  const collection = "select a collection";
+  const initialState = {
+    name: "",
+    address: "",
+    phone: "",
+    email: "",
+    collection: "select a collection",
+  };
+  const [form, setForm] = useState(initialState);
+  const handleClear = () => {
+    setForm(initialState);
+  };
   const handleClose = () => {
     setNewMemberState(false);
   };
@@ -23,19 +34,49 @@ const NewMember = ({state}) => {
         </div>
         <div className="form-container">
           <Form>
-            <input placeholder="member name" type="text" />
-            <textarea placeholder="address..." rows="3" />
+            <input
+              placeholder="member name"
+              type="text"
+              onChange={(e) => {
+                setForm((state) => ({ ...state, name: e.target.value }));
+              }}
+              value={form.name}
+            />
+            <textarea
+              placeholder="address..."
+              rows="3"
+              onChange={(e) => {
+                setForm((state) => ({ ...state, address: e.target.value }));
+              }}
+              value={form.address}
+            />
             <div className="phone-email-wrapper">
-              <input className="phone" placeholder="phone" type="text" />
-              <input className="email" placeholder="email" type="text" />
+              <input
+                className="phone"
+                placeholder="phone"
+                type="text"
+                onChange={(e) => {
+                  setForm((state) => ({ ...state, phone: e.target.value }));
+                }}
+                value={form.phone}
+              />
+              <input
+                className="email"
+                placeholder="email"
+                type="text"
+                onChange={(e) => {
+                  setForm((state) => ({ ...state, email: e.target.value }));
+                }}
+                value={form.email}
+              />
             </div>
             <div className="select-collection-wrapper">
-              <span className="selected-collection">{collection}</span>
+              <span className="selected-collection">{form.collection}</span>
               <span className="select-collection-btn"></span>
             </div>
             <div className="btn-wrapper">
-              <button className="close-btn" onClick={handleClose}>
-                close
+              <button className="close-btn" onClick={handleClear}>
+                clear
               </button>
               <button className="submit-btn" type="submit">
                 create
@@ -46,6 +87,6 @@ const NewMember = ({state}) => {
       </div>
     </div>
   );
-}
+};
 
-export default NewMember
+export default NewMember;

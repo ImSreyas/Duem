@@ -27,6 +27,9 @@
   margin: 0;
   padding: 0;
 }
+#root{
+  position: relative;
+}
 
 body {
   margin: 0;
@@ -136,6 +139,14 @@ textarea {
       border: 2px solid darken($border-color, 5);
     }
   }
+}
+//error wrapper
+.error-wrapper{
+  width: 100%;
+  padding-inline: .6rem;
+  text-align: end;
+  color: red;
+  font-size: .7rem;
 }
 
 @media (width < 920px) {

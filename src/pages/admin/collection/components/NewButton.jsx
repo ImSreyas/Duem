@@ -5,7 +5,7 @@ import { refContext } from "../../../../App";
 import NewMember from "./NewMember";
 import NewCollection from "./NewCollection";
 
-const NewButton = () => {
+const NewButton = ({ refresher }) => {
   const [newCollectionState, setNewCollectionState] = useState(false);
   const [newMemberState, setNewMemberState] = useState(false);
 
@@ -49,7 +49,7 @@ const NewButton = () => {
           </div>
         </div>
       </span>
-      <NewCollection state={[newCollectionState, setNewCollectionState]} />
+      <NewCollection refresher={refresher} state={[newCollectionState, setNewCollectionState]} />
       <NewMember state={[newMemberState, setNewMemberState]} />
     </>
   );

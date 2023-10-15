@@ -53,11 +53,16 @@ nav {
                 }
             }
         }
+
         .nav-menu-icon {
             @include b-icon("/src/assets/menu-burger.svg", 3.25rem, 1.2rem);
             @include border;
             border-radius: 1.3rem;
             cursor: pointer;
+            // position: relative;
+            &.active{
+                @include b-icon("/src/assets/cross-small.svg", 3.25rem, 1.2rem);
+            }
         }
 
         .nav-icon {
@@ -82,20 +87,74 @@ nav {
         }
     }
 }
-@media (width < 920px){
-    nav{
+
+.nav-menu-low {
+    display: block;
+    position: fixed;
+    top: 130%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    @include flex-center;
+    flex-direction: column !important;
+
+    width: fit-content;
+    height: fit-content;
+    border-radius: 4rem;
+    background-color: $background-color;
+    z-index: 100;
+    overflow: hidden;
+    @include border;
+    padding: 3rem 1rem;
+    box-shadow: 0 0 8rem rgb(190, 190, 190);
+
+    transition: top 300ms ease-in-out;
+
+    &.active{
+        top: 50%;
+    } 
+    .nav-item {
+        width: min(21rem, 80vw) !important;
+        display: block;
+        background-color: $background-color;
+        width: fit-content;
+        padding: 1rem 5rem;
+        border-block-end: 1px solid $border-color;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.1rem;
+
+        &.active{
+            background-color: $color;
+            color: $background-color;
+        }
+        &:first-child{
+            border-block-start: 1px solid $border-color;
+        }
+        // &:last-child{
+        //     border: none;
+        // }
+    }
+}
+
+@media (width < 920px) {
+    nav {
         padding-inline: 4rem;
         padding-block-end: 1.2rem;
     }
 }
-@media (width < 600px){
-    nav{
+
+@media (width < 600px) {
+    nav {
         padding-inline: 2rem;
         padding-block-end: 1rem;
     }
+    .nav-menu-low{
+        border-radius: 2rem;
+    }
 }
-@media (width < 400px){
-    nav{
+
+@media (width < 400px) {
+    nav {
         padding-inline: 1rem;
         padding-block-end: 1rem;
     }
