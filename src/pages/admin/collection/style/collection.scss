@@ -73,6 +73,22 @@
                         transform: translateY(-50%) rotate(180deg);
                     }
                 }
+
+                .option-arrow-new {
+                    top: 50%;
+                    right: .6rem;
+                    transform: translateY(-50%);
+                    position: absolute;
+                    @include border;
+                    @include b-icon("/src/assets/plus-small.svg", 1.8rem, 1.1rem);
+                    border-radius: .7rem;
+                    pointer-events: none;
+
+                    &.active {
+                        transform: translateY(-50%) rotate(45deg);
+                        border-radius: 5rem;
+                    }
+                }
             }
 
             .new-container-wrapper {
@@ -98,10 +114,12 @@
                     flex-direction: column;
 
                     width: min(48rem, 90%);
-                    height: fit-content;
+                    min-height: fit-content;
+                    max-height: 100vh;
+                    overflow-y: scroll;
                     // backdrop-filter: blur(6px);
                     background-color: $background-color;
-                    padding: 2.5rem 3rem;
+                    padding: 1.8rem 3rem 1.5rem;
                     border-radius: 2rem;
                     @include border;
 
@@ -134,6 +152,10 @@
                         flex-direction: column;
                         width: 100%;
 
+                        .error-wrapper {
+                            font-size: .5rem !important;
+                        }
+
                         form {
                             width: 100%;
                             padding: 0 4rem;
@@ -146,14 +168,6 @@
                             }
 
 
-                            .error-wrapper {
-                                // margin-block-end: 1rem;
-                                transform: translateY(-.8rem);
-                                padding-inline: 1rem;
-                                &[data-shake=true]{
-                                    animation: shake 300ms ease-in-out;
-                                }
-                            }
 
                             @keyframes shake {
                                 10% {
@@ -181,11 +195,15 @@
                                 @include flex-center;
                                 gap: .8rem;
 
-                                .phone {
+                                div {
+                                    width: 100%;
+                                }
+
+                                .phone-wrapper {
                                     flex: 1;
                                 }
 
-                                .email {
+                                .email-wrapper {
                                     flex: 2;
                                 }
                             }
@@ -205,11 +223,61 @@
                                     font-size: .85rem;
                                 }
 
-                                .select-collection-btn {
-                                    @include b-icon("/src/assets/layer-plus.svg", 3.25rem, 1.1rem);
-                                    @include border;
-                                    border-radius: 1.2rem;
-                                    cursor: pointer;
+                                .select-collection-btn-wrapper {
+                                    position: relative;
+
+                                    .select-collection-btn {
+                                        @include b-icon("/src/assets/layer-plus.svg", 3.25rem, 1.1rem);
+                                        @include border;
+                                        border-radius: 1.2rem;
+                                        cursor: pointer;
+                                    }
+
+                                    .collection-container-wrapper {
+                                        display: none;
+                                        flex-direction: column;
+                                        position: absolute;
+                                        bottom: calc(100% + 1rem);
+                                        right: 0;
+                                        border-radius: 2rem;
+                                        @include border;
+                                        background-color: $background-color;
+                                        box-shadow: 0 0 3rem rgb(202, 202, 202);
+                                        padding: 1rem 2rem;
+                                        min-height: fit-content;
+                                        max-height: 16rem;
+                                        width: min(80vw, 18rem);
+
+                                            &[data-active=true]{
+                                                display: flex;
+                                            }
+                                        .search-input{
+                                            max-width: 100%;
+                                            margin-block-end: 1rem;
+                                            padding-block: .9rem;
+                                        }
+                                        .collection-options-container{
+                                            flex: 1;
+                                            overflow-y: scroll;
+                                            padding-inline-end: .5rem;
+
+                                            .collection-item{
+                                                padding: .7rem 1rem;
+                                                @include border;
+                                                border-color: transparent;
+                                                border-radius: 1rem;
+                                                font-size: .85rem;
+
+                                                &[data-select=true]{
+                                                    background-color: $color;
+                                                    color: $background-color;
+                                                }
+                                                &:hover{
+                                                    cursor: pointer;
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
 
@@ -341,7 +409,11 @@
 @media (width <=500px) {
     .collection-page {
         .new-container {
-            padding: 1rem 1.2rem !important;
+            padding: 1.5rem 1.8rem !important;
+            width: 100dvw !important;
+            height: 100vh !important;
+            border-radius: 0rem !important;
+            display: block !important;
 
             .form-container {
                 padding-block-end: 0rem !important;

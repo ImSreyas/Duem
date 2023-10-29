@@ -2,6 +2,7 @@ import { addDoc, collection } from "firebase/firestore";
 import { useState } from "react";
 import { Form } from "react-router-dom";
 import { db } from "../../../../config/firebase";
+import InputError from "../../common/InputError";
 
 const NewCollection = ({ state, refresher }) => {
   const [newCollectionState, setNewCollectionState] = state;
@@ -15,8 +16,10 @@ const NewCollection = ({ state, refresher }) => {
   const [form, setForm] = useState(initialState);
   const handleClear = () => {
     setForm(initialState);
+    setError("");
   };
   const handleClose = () => {
+    setError("");
     setNewCollectionState(false);
   };
   const submit = () => {
@@ -67,19 +70,19 @@ const NewCollection = ({ state, refresher }) => {
               type="text"
               value={form?.name}
               onChange={(e) => {
+                setError("");
                 setForm((state) => ({
                   ...state,
                   name: e.target.value,
                 }));
               }}
             />
-            <div data-shake={shake} className="error-wrapper">
-              {error}
-            </div>
+            <InputError shake={shake} error={error} />
             <textarea
               placeholder="collection description..."
               rows="9"
               onChange={(e) => {
+                setError("");
                 setForm((state) => ({
                   ...state,
                   description: e.target.value,

@@ -118,18 +118,19 @@ nav {
         background-color: $background-color;
         width: fit-content;
         padding: 1rem 5rem;
-        border-block-end: 1px solid $border-color;
+        // border-block-end: 2px solid $border-color;
         text-align: center;
         font-weight: 500;
         font-size: 1.1rem;
+        border-radius: 1.3rem;
 
         &.active{
             background-color: $color;
             color: $background-color;
         }
-        &:first-child{
-            border-block-start: 1px solid $border-color;
-        }
+        // &:first-child{
+        //     border-block-start: 1px solid $border-color;
+        // }
         // &:last-child{
         //     border: none;
         // }

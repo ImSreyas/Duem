@@ -18,7 +18,6 @@ const Nav = () => {
 
   useEffect(() => {
     if(width > 920) setNavMenu(false)
-    console.log("working")
   }, [width])
 
   return (

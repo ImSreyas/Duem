@@ -34,7 +34,7 @@ const NewButton = ({ refresher }) => {
       <span ref={createNewRef} className="new-btn" onClick={handleButtonClick}>
         new
         <span
-          className={createNewState ? "active option-arrow" : "option-arrow"}
+          className={createNewState ? "active option-arrow-new" : "option-arrow-new"}
         ></span>
         <div
           data-show={createNewState}

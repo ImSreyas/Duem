@@ -80,7 +80,7 @@ textarea {
 }
 
 .main-body {
-  width: calc(100vw - .4rem);
+  width: 100dvw;
   min-height: 90vh;
   max-height: fit-content;
 
@@ -147,6 +147,13 @@ textarea {
   text-align: end;
   color: red;
   font-size: .7rem;
+  // margin-block-end: 1rem;
+  transform: translateY(-.8rem);
+  padding-inline: 1rem;
+
+  &[data-shake=true] {
+    animation: shake 300ms ease-in-out;
+  }
 }
 
 @media (width < 920px) {

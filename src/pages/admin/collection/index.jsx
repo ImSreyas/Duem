@@ -5,29 +5,34 @@ import SortButton from "./components/SortButton";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../../config/firebase";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { updater } from "../../../store/collection";
 
 const Collection = () => {
-  const [collectionData, setCollectionData] = useState([]);
+  const dispatch = useDispatch();
+  // const [collectionData, setCollectionData] = useState([]);
   const [refresher, setRefresher] = useState(false);
+  const collectionData = useSelector((state) => state.collection.value);
 
-  useEffect(()=>{
+  useEffect(() => {
     const getCollections = async () => {
-      try{
-        const memberRef = collection(db, "members");
-      const data = await getDocs(collection(db, "collections"))
-      setCollectionData(data.docs.map((doc)=>({...doc.data(), id: doc.id})))
-      collectionData.map(async (collection)=>{
-        const query = memberRef.where("collection_id", "==", collection.id);
-        const count = await query.count().get();
-        setCollectionData((prev)=>({...prev, count: count.count}))
-      })
+      try {
+        // const memberRef = collection(db, "members");
+        const data = await getDocs(collection(db, "collections"));
+        dispatch(
+          updater(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+        );
+        // collectionData.map(async (collection) => {
+        //   const query = memberRef.where("collection_id", "==", collection.id);
+        //   const count = await query.count().get();
+        //   setCollectionData((prev) => ({ ...prev, count: count.count }));
+        // });
+      } catch (err) {
+        console.log(err);
       }
-      catch(err){
-        console.log(err)
-      }
-    }
+    };
     getCollections();
-  }, [refresher])
+  }, [refresher]);
 
   return (
     <div className="main-body collection-page">
@@ -52,7 +57,7 @@ const Collection = () => {
           return (
             <Link
               to={"/" + collection?.id}
-              key={collection?.name}
+              key={collection?.id}
               className="collection-card-wrapper"
             >
               <div className="collection-name">{collection.name}</div>
