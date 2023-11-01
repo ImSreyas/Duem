@@ -39,6 +39,10 @@ function App() {
           element: <Collection />,
         },
         {
+          path: ":id",
+          element: <Collection />,
+        },
+        {
           path: "history",
           element: <History />,
         },

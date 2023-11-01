@@ -1,4 +1,4 @@
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, getDoc, getDocs, query, where } from "firebase/firestore";
 import { useState } from "react";
 import { Form } from "react-router-dom";
 import { db } from "../../../../config/firebase";
@@ -36,11 +36,21 @@ const NewCollection = ({ state, refresher }) => {
   };
   const addCollection = async () => {
     try {
-      const data = await addDoc(collection(db, "collections"), form);
-      setNewCollectionState(false);
-      refresher((prev) => !prev);
-      handleClear();
-      console.log(data);
+      const q = query(collection(db, "collections"), where("name", "==", form.name))
+      const snap = await getDocs(q);
+      if (!snap.size) {
+        const data = await addDoc(collection(db, "collections"), form);
+        setNewCollectionState(false);
+        refresher((prev) => !prev);
+        handleClear();
+        console.log(data);
+      } else {
+        setShake(true);
+        setTimeout(() => {
+          setShake(false);
+        }, 300);
+        setError("collection already exist.");
+      }
     } catch (err) {
       console.log(err);
     }
@@ -73,7 +83,7 @@ const NewCollection = ({ state, refresher }) => {
                 setError("");
                 setForm((state) => ({
                   ...state,
-                  name: e.target.value,
+                  name: e.target.value.trim(),
                 }));
               }}
             />
@@ -85,7 +95,7 @@ const NewCollection = ({ state, refresher }) => {
                 setError("");
                 setForm((state) => ({
                   ...state,
-                  description: e.target.value,
+                  description: e.target.value.trim(),
                 }));
               }}
               value={form?.description}
