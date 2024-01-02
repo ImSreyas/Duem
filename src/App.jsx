@@ -7,6 +7,7 @@ import Dashboard from "./pages/admin/dashboard";
 import { useDispatch } from "react-redux";
 import { turnOff } from "./store/options";
 import { createContext, useEffect, useRef } from "react";
+import CollectionData, { collectionDetailsLoader } from "./pages/admin/collectionData";
 
 export const refContext = createContext();
 
@@ -39,10 +40,6 @@ function App() {
           element: <Collection />,
         },
         {
-          path: ":id",
-          element: <Collection />,
-        },
-        {
           path: "history",
           element: <History />,
         },
@@ -51,6 +48,11 @@ function App() {
           element: <Dashboard />,
         },
       ],
+    },
+    {
+      path: "/collection/:id",
+      element: <CollectionData />,
+      loader: collectionDetailsLoader
     },
   ]);
 

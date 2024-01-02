@@ -56,7 +56,7 @@ const Collection = () => {
         {collectionData.map((collection) => {
           return (
             <Link
-              to={"/" + collection?.id}
+              to={"/collection/" + collection?.id}
               key={collection?.id}
               className="collection-card-wrapper"
             >

@@ -1,4 +1,11 @@
-import { addDoc, collection, getDoc, getDocs, query, where } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  getDoc,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 import { useState } from "react";
 import { Form } from "react-router-dom";
 import { db } from "../../../../config/firebase";
@@ -36,10 +43,16 @@ const NewCollection = ({ state, refresher }) => {
   };
   const addCollection = async () => {
     try {
-      const q = query(collection(db, "collections"), where("name", "==", form.name))
+      const q = query(
+        collection(db, "collections"),
+        where("name", "==", form.name)
+      );
       const snap = await getDocs(q);
       if (!snap.size) {
-        const data = await addDoc(collection(db, "collections"), form);
+        const data = await addDoc(collection(db, "collections"), {
+          name: form.name.trim(),
+          description: form.description.trim(),
+        });
         setNewCollectionState(false);
         refresher((prev) => !prev);
         handleClear();
@@ -83,7 +96,7 @@ const NewCollection = ({ state, refresher }) => {
                 setError("");
                 setForm((state) => ({
                   ...state,
-                  name: e.target.value.trim(),
+                  name: e.target.value,
                 }));
               }}
             />
@@ -95,7 +108,7 @@ const NewCollection = ({ state, refresher }) => {
                 setError("");
                 setForm((state) => ({
                   ...state,
-                  description: e.target.value.trim(),
+                  description: e.target.value,
                 }));
               }}
               value={form?.description}
