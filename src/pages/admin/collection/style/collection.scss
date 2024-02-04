@@ -67,6 +67,7 @@
                     @include b-icon("/src/assets/angle-small-down.svg", 1.8rem, .8rem);
                     border-radius: .7rem;
                     pointer-events: none;
+                    // background-color: $primary;
                     // transition: 200ms transform ease-in-out;
 
                     &.active {
@@ -326,13 +327,17 @@
 
             font-size: 1.05rem;
             font-weight: 400;
-            border: 2px solid $border-color;
+            // border: 2px solid $border-color;
+            @include border;
             border-radius: 1.9rem;
+            box-shadow: 0 0 1rem rgb(235, 235, 235);
+            // border-color: $primary;
 
             transition: border-color 200ms ease-in-out;
 
             &:hover {
                 border-color: darken($color: $border-color, $amount: 75);
+                border-color: $primary;
             }
 
             // .collection-name{

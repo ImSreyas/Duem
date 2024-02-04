@@ -27,14 +27,16 @@ nav {
         .nav-wrapper {
             display: flex;
             width: fit-content;
-            border: 2px solid $border-color;
+            // border: 2px solid $border-color;
+            @include border;
             border-radius: 1.25rem;
             overflow: hidden;
 
             .nav-item {
                 padding: .75rem 2rem;
-                border-inline-end: 2px solid $border-color;
-                transition: color 250ms ease-in-out;
+                // border-inline-end: 2px solid $border-color;
+                @include border;
+                // transition: color 250ms ease-in-out;
                 color: lighten($color, 50);
 
 
@@ -43,7 +45,7 @@ nav {
                 }
 
                 &.active {
-                    background-color: $color;
+                    background-color: $primary;
                     color: $background-color;
                     border: none;
                 }
@@ -73,7 +75,8 @@ nav {
             height: $size;
             padding: .8rem;
 
-            border: 2px solid $border-color;
+            // border: 2px solid $border-color;
+            @include border;
             border-radius: 1.3rem;
             cursor: pointer;
 

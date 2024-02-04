@@ -1,5 +1,6 @@
 @import "./colors.scss";
 @import "./scrollbar.scss";
+@import "./lib.scss";
 
 :root {
   width: 100vw;
@@ -66,7 +67,7 @@ input,
 textarea {
   padding: 1rem 1.5rem;
   border-radius: 1.18rem;
-  border: 2px solid $border-color;
+  @include border;
   background-color: $background-color;
   color: $color;
   font-size: .9rem;
@@ -116,11 +117,12 @@ textarea {
     text-align: center;
     padding: .5rem 1rem .5rem 1rem;
     border-radius: .8rem;
-    border: 2px solid $background-color;
+    @include border;
+    border-color: $background-color;
     position: relative;
 
     &.selected {
-      border: 2px solid lighten($color: $border-color, $amount: 5);
+      border-color: lighten($color: $border-color, $amount: 5);
     }
 
     // &.selected::before{
@@ -136,7 +138,7 @@ textarea {
     //   border-radius: 50rem;
     // }
     &:hover {
-      border: 2px solid darken($border-color, 5);
+      border-color: darken($border-color, 5);
     }
   }
 }
