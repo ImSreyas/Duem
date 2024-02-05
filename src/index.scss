@@ -28,7 +28,8 @@
   margin: 0;
   padding: 0;
 }
-#root{
+
+#root {
   position: relative;
 }
 
@@ -122,7 +123,8 @@ textarea {
     position: relative;
 
     &.selected {
-      border-color: lighten($color: $border-color, $amount: 5);
+      // border-color: lighten($color: $border-color, $amount: 5);
+      border-color: $primary;
     }
 
     // &.selected::before{
@@ -139,11 +141,13 @@ textarea {
     // }
     &:hover {
       border-color: darken($border-color, 5);
+      border-color: lighten($primary, 25)
     }
   }
 }
+
 //error wrapper
-.error-wrapper{
+.error-wrapper {
   width: 100%;
   padding-inline: .6rem;
   text-align: end;
@@ -163,11 +167,13 @@ textarea {
     padding-inline: 4rem;
   }
 }
+
 @media (width < 600px) {
   .main-body {
     padding-inline: 2rem;
   }
 }
+
 @media (width < 400px) {
   .main-body {
     padding-inline: 1rem;

@@ -51,7 +51,7 @@ const SortButton = () => {
           members
         </div>
         <div
-          className={sortValue == "most due" ? "options selected" : "options"}
+          className={sortValue == "due" ? "options selected" : "options"}
         >
           due
         </div>

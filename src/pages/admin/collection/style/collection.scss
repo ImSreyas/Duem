@@ -28,6 +28,12 @@
                 border-radius: 1.25rem;
 
                 @include border;
+
+                &:focus{
+                    @include border;
+                    border-color: $primary !important;
+                    border-width: 1px !important;
+                }
             }
 
             .search-btn {
