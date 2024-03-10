@@ -3,9 +3,9 @@ import Image from "next/image";
 export default function Home() {
   return (
     <main className="">
-      <div className="px-6 py-2 border border-neutral-700 rounded-lg w-fit m-10 cursor-pointer active:bg-neutral-900 select-none">
+      <button className="px-6 py-2 border border-neutral-700 rounded-lg w-fit m-10 dark:active:bg-neutral-900 select-none">
         Test button
-      </div>
+      </button>
     </main>
   );
 }
