@@ -19,17 +19,17 @@ const Nav = () => {
         <div className="border rounded-xl h-fit w-fit border-neutral-700">
           <Link
             href="/"
-            className="inline-block px-9 py-2.5 border-e border-neutral-700"
+            className="inline-block px-8 py-2.5 border-e border-neutral-700"
           >
             Collections
           </Link>
           <Link
             href="/history"
-            className="inline-block px-9 py-2.5 border-e border-neutral-700"
+            className="inline-block px-8 py-2.5 border-e border-neutral-700"
           >
             History
           </Link>
-          <Link href="/dashboard" className="inline-block px-9 py-2.5">
+          <Link href="/dashboard" className="inline-block px-8 py-2.5">
             Dashboard
           </Link>
         </div>
