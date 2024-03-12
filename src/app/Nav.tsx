@@ -33,7 +33,7 @@ const Nav = () => {
             Dashboard
           </Link>
         </div>
-        <div className="flex justify-center items-center border border-neutral-700 ms-3 h-12 w-12 rounded-full">
+        <div className="cursor-pointer flex justify-center items-center border border-neutral-700 ms-3 h-12 w-12 rounded-full">
           <Image src={profileSrc} alt="profile" width={10} height={10} className="text-white h-5 w-5" />
         </div>
       </div>
