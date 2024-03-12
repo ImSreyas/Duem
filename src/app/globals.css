@@ -22,6 +22,7 @@ body {
 
 *{
   backface-visibility: hidden;
+  font-size: 16px;
 }
 
 @layer base {
