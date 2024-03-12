@@ -20,6 +20,10 @@ body {
   min-height: 100dvh;
 }
 
+*{
+  backface-visibility: hidden;
+}
+
 @layer base {
   button{
     cursor: pointer;
