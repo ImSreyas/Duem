@@ -10,7 +10,7 @@ import crossSrc from "/public/icons/cross-small.svg";
 import NavIcon from "./NavIcon";
 import SideNav from "./SideNav";
 
-const Nav = () => {
+const Nav = ({mobileNavState}: {mobileNavState: boolean}) => {
   const [isSideNavActive, setIsSideNavActive] = useState(false); 
 
   return (
@@ -37,7 +37,7 @@ const Nav = () => {
           </Link>
         </div>
         <NavIcon imgSrc={profileSrc} />
-        <NavIcon imgSrc={isSideNavActive? crossSrc : menuBurgerSrc} toggle={[isSideNavActive, setIsSideNavActive]} className="block z-10 sm:hidden" />
+        <NavIcon imgSrc={isSideNavActive? crossSrc : menuBurgerSrc} toggle={[isSideNavActive, setIsSideNavActive]} className={`${mobileNavState ? "hidden" : ""} block z-10 sm:hidden`} />
       </div>
       <SideNav active={[isSideNavActive, setIsSideNavActive]}/>
     </nav>
