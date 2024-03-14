@@ -10,36 +10,43 @@ import crossSrc from "/public/icons/cross-small.svg";
 import NavIcon from "./NavIcon";
 import SideNav from "./SideNav";
 
-const Nav = ({mobileNavState}: {mobileNavState: boolean}) => {
-  const [isSideNavActive, setIsSideNavActive] = useState(false); 
+const Nav = ({ mobileNavState }: { mobileNavState: boolean }) => {
+  const [isSideNavActive, setIsSideNavActive] = useState(false);
 
   return (
-    <nav className="relative flex justify-between items-center px-6 sm:px-10 md:px-20 py-8 h-fit">
+    <nav className="sticky -top-3 top flex justify-between items-center px-6 sm:px-10 md:px-20 py-8 h-fit bg-black">
       <div></div>
       <div className="flex justify-center items-center">
         <NavIcon imgSrc={subSrc} />
         <NavIcon imgSrc={notificationSrc} />
-        <div className="mx-1.5 hidden sm:block border rounded-xl h-fit w-fit border-neutral-700">
+        <div className="mx-1.5 hidden sm:block border rounded-xl h-fit w-fit border-border">
           <Link
             href="/"
-            className="inline-block px-4 md:px-6 lg:px-8 py-2.5 border-e border-neutral-700"
+            className="inline-block px-4 md:px-6 lg:px-8 py-2.5 border-e border-border"
           >
             Collections
           </Link>
           <Link
             href="/history"
-            className="inline-block px-4 md:px-6 lg:px-8 py-2.5 border-e border-neutral-700"
+            className="inline-block px-4 md:px-6 lg:px-8 py-2.5 border-e border-border"
           >
             History
           </Link>
-          <Link href="/dashboard" className="inline-block px-4 md:px-6 lg:px-8 py-2.5">
+          <Link
+            href="/dashboard"
+            className="inline-block px-4 md:px-6 lg:px-8 py-2.5"
+          >
             Dashboard
           </Link>
         </div>
         <NavIcon imgSrc={profileSrc} />
-        <NavIcon imgSrc={isSideNavActive? crossSrc : menuBurgerSrc} toggle={[isSideNavActive, setIsSideNavActive]} className={`${mobileNavState ? "hidden" : ""} block z-10 sm:hidden`} />
+        <NavIcon
+          imgSrc={isSideNavActive ? crossSrc : menuBurgerSrc}
+          toggle={[isSideNavActive, setIsSideNavActive]}
+          className={`${mobileNavState ? "hidden" : ""} block z-10 sm:hidden`}
+        />
       </div>
-      <SideNav active={[isSideNavActive, setIsSideNavActive]}/>
+      <SideNav active={[isSideNavActive, setIsSideNavActive]} />
     </nav>
   );
 };

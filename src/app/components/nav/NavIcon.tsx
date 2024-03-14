@@ -15,7 +15,7 @@ const NavIcon = ({
 
   return (
     <div
-      className={`active:bg-neutral-800 cursor-pointer bg-black flex justify-center items-center border border-neutral-700 mx-1.5 h-12 w-12 rounded-full ${className}`}
+      className={`active:bg-neutral-800 cursor-pointer bg-black flex justify-center items-center border border-border mx-1.5 h-12 w-12 rounded-full ${className}`}
       onClick={() => {
         setVal?.((val: boolean) => !val);
       }}

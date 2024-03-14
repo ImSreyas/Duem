@@ -23,11 +23,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  const modernMobileNav = false;
+  const modernMobileNav = true;
 
   return (
     <html lang="en" className="overflow-x-hidden">
-      <body className={`${poppins.className} overflow-x-hidden`}>
+      <body className={`${poppins.className} overflow-x-hidden ${modernMobileNav ? "pb-12" : ""}`}>
         <Nav mobileNavState={modernMobileNav} />
         {children}
         <MobileNav state={modernMobileNav}/>

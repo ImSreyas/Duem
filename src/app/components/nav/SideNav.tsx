@@ -10,18 +10,18 @@ const SideNav = ({
   ];
 }) => {
   const [isSideNavActive, setIsSideNavActive] = active;
-  const linkClass = `active:bg-neutral-800 px-4 py-3 block text-center border-b border-neutral-700 last:border-none`;
+  const linkClass = `active:bg-neutral-800 px-4 py-3 block text-center border-b border-border last:border-none`;
   const onclickHandler = () => {
     setIsSideNavActive(false);
-  }
+  };
 
   return (
     <div
       className={`${
         isSideNavActive ? "end-0" : "-end-3/4"
-      } transition-all duration-300 ease-in-out inset-0 left-auto absolute h-screen w-3/4 bg-black sm:hidden border-s border-neutral-700 py-28 px-6`}
+      } transition-all duration-300 ease-in-out inset-0 left-auto absolute h-screen w-3/4 bg-black sm:hidden border-s border-border py-28 px-6`}
     >
-      <div className="border border-neutral-700 rounded-xl">
+      <div className="border border-border rounded-xl">
         <Link href="/" className={linkClass} onClick={onclickHandler}>
           Collections
         </Link>
@@ -32,7 +32,7 @@ const SideNav = ({
           Dashboard
         </Link>
       </div>
-   </div>
+    </div>
   );
 };
 
