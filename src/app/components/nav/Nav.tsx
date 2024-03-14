@@ -1,15 +1,20 @@
+"use client";
+
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import subSrc from "/public/icons/sun.svg";
 import notificationSrc from "/public/icons/bell.svg";
 import profileSrc from "/public/icons/user.svg";
 import menuBurgerSrc from "/public/icons/menu-burger.svg";
+import crossSrc from "/public/icons/cross-small.svg";
 import NavIcon from "./NavIcon";
+import SideNav from "./SideNav";
 
 const Nav = () => {
+  const [isSideNavActive, setIsSideNavActive] = useState(false); 
 
   return (
-    <nav className="flex justify-between items-center px-6 sm:px-10 md:px-20 py-8 h-fit">
+    <nav className="relative flex justify-between items-center px-6 sm:px-10 md:px-20 py-8 h-fit">
       <div></div>
       <div className="flex justify-center items-center">
         <NavIcon imgSrc={subSrc} />
@@ -32,9 +37,9 @@ const Nav = () => {
           </Link>
         </div>
         <NavIcon imgSrc={profileSrc} />
-        <NavIcon imgSrc={menuBurgerSrc} className="block sm:hidden" />
+        <NavIcon imgSrc={isSideNavActive? crossSrc : menuBurgerSrc} toggle={[isSideNavActive, setIsSideNavActive]} className="block z-10 sm:hidden" />
       </div>
-      
+      <SideNav active={[isSideNavActive, setIsSideNavActive]}/>
     </nav>
   );
 };
